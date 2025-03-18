@@ -57,7 +57,11 @@
     <div class="container">
       <div class="header">UMC Study Plan</div>
       <div class="input-container">
-        <input class="input" type="text" placeholder="스터디 계획을 작성해보세요"/>
+        <input
+          class="input"
+          type="text"
+          placeholder="스터디 계획을 작성해보세요"
+        />
       </div>
       <div class="todo-container">
         <div class="todo">해야 할 일</div>
@@ -81,17 +85,15 @@
           todoItem.textContent = task;
           todoItem.style.textAlign = "start";
           todoItem.style.textDecoration = "none";
-          todoItem.classList.add("todo-item");     
+          todoItem.classList.add("todo-item");
 
           const completeBtn = document.createElement("button");
           completeBtn.textContent = "완료";
-          completeBtn.style.backgroundColor = "none"
+          completeBtn.style.backgroundColor = "none";
           completeBtn.style.border = "none";
           completeBtn.style.borderRadius = "2px";
-          
 
           todoItem.appendChild(completeBtn);
-          
 
           completeBtn.addEventListener("click", function () {
             moveToDone(todoItem);
@@ -102,9 +104,20 @@
 
         function moveToDone(todoItem) {
           const doneContainer = document.querySelector(".done");
-        //   todoItem.style.backgroundColor = "#b0e57c"; // 초록색으로 변경
           todoItem.remove(); // 기존 위치에서 제거
           doneContainer.appendChild(todoItem); // '해낸 일'로 이동
+
+          const removeBtn = todoItem.firstElementChild;
+          removeBtn.textContent = "삭제";
+
+          removeBtn.addEventListener("click", function () {
+            todoItem.remove();
+          });
+        }
+
+        function removeTodo(todoItem) {
+          const doneContainer = document.querySelector(".done");
+          todoItem.remove();
         }
       });
     </script>
