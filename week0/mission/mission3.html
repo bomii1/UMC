@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        width: 80%;
+      }
+      .header {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        padding: 20px;
+        border-bottom: solid 2px gray;
+      }
+
+      .input-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .input {
+        width: 80%;
+        padding: 8px;
+      }
+
+      .todo-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .done-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .todo {
+        padding-bottom: 4px;
+        text-decoration: underline;
+      }
+
+      .done {
+        padding-bottom: 4px;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">UMC Study Plan</div>
+      <div class="input-container">
+        <input class="input" type="text" placeholder="스터디 계획을 작성해보세요"/>
+      </div>
+      <div class="todo-container">
+        <div class="todo">해야 할 일</div>
+        <div class="done">해낸 일</div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const input = document.querySelector(".input");
+        const todoContainer = document.querySelector(".todo");
+
+        input.addEventListener("keypress", function (e) {
+          if (event.key === "Enter" && input.value.trim() !== "") {
+            addTodo(input.value);
+            input.value = "";
+          }
+        });
+
+        function addTodo(task) {
+          const todoItem = document.createElement("div");
+          todoItem.textContent = task;
+          todoItem.style.textAlign = "start";
+          todoItem.style.textDecoration = "none";
+          todoItem.classList.add("todo-item");     
+
+          const completeBtn = document.createElement("button");
+          completeBtn.textContent = "완료";
+          completeBtn.style.backgroundColor = "none"
+          completeBtn.style.border = "none";
+          completeBtn.style.borderRadius = "2px";
+          
+
+          todoItem.appendChild(completeBtn);
+          
+
+          completeBtn.addEventListener("click", function () {
+            moveToDone(todoItem);
+          });
+
+          todoContainer.appendChild(todoItem);
+        }
+
+        function moveToDone(todoItem) {
+          const doneContainer = document.querySelector(".done");
+        //   todoItem.style.backgroundColor = "#b0e57c"; // 초록색으로 변경
+          todoItem.remove(); // 기존 위치에서 제거
+          doneContainer.appendChild(todoItem); // '해낸 일'로 이동
+        }
+      });
+    </script>
+  </body>
+</html>
