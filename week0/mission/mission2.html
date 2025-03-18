@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .header {
+        background-color: #121e31;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 1;
+        padding: 20px;
+      }
+
+      .menu {
+        background-color: #e84848;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 3;
+        padding: 20px;
+      }
+
+      .hero {
+        background-color: #4a80c7;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 4;
+        padding: 50px;
+      }
+
+      .main {
+        background-color: #1e293b;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .empty {
+        background-color: white;
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+
+      .con {
+        grid-column: span 4;
+        grid-row: span 2;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+      }
+
+      .image {
+        background-color: #b7dee8;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 1;
+      }
+
+      .extra {
+        background-color: #4bb187;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 1;
+      }
+
+      .banner {
+        background-color: #f4c95d;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: span 4;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">HEADER</div>
+      <div class="menu">MENU</div>
+      <div class="hero">HERO</div>
+      <div class="main">MAIN</div>
+      <div class="empty"></div>
+      <div class="image">IMAGE</div>
+      <div class="extra">EXTRA</div>
+      <div class="banner">BANNER</div>
+    </div>
+  </body>
+</html>
